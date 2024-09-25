@@ -1,0 +1,19 @@
+version: '3'
+services:
+  app:
+    build: .  # Properly indented build key
+    ports:
+      - "3000:3000"  # Correct format for ports
+    depends_on:
+      - mongo
+    volumes:
+      - .:/usr/src/app  # Correct volume path
+  mongo:
+    image: mongo:5
+    ports:
+      - "27017:27017"  # Correct format for MongoDB ports
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:  # External volume definition
